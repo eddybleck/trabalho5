@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Metadados -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="formulario.css"
+      media="screen"
+    />
+    <!-- Título da página (aparece na aba) -->
+    <title>Cadastro de Professores</title>
+  </head>
+  <body>
+    <!-- Cabeçalho com título e subtítulo (ambos com css de id "titulo") -->
+    <div>
+      <h1 id="titulo">Cadastro de Professores</h1>
+      <p id="subtitulo">Complete os campos com suas informações</p>
+      <br />
+    </div>
+
+    <!-- Formulário de Inserção -->
+    <form method="POST" action="conn/cadastra_prof.php">
+      <!-- Campos do formulário -->
+      <!-- Nome e Sobrenome -->
+      <fieldset class="grupo">
+        <div class="campo">
+          <label for="nome"><strong>Nome</strong></label>
+          <input type="text" name="nome" id="nome" required />
+        </div>
+        <div class="campo">
+          <label for="sobrenome"><strong>Sobrenome</strong></label>
+          <input type="text" name="sobrenome" id="sobrenome" required />
+        </div>
+      </fieldset>
+      <!-- Email e Telefone -->
+      <fieldset class="grupo">
+        <div class="campo">
+          <label for="email"><strong>Email</strong></label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="campo">
+          <label for="tel"><strong>Telefone</strong></label>
+          <input type="tel" name="tel" id="tel" required />
+        </div>
+      </fieldset>
+      <!-- Qualificação acadêmica -->
+      <div class="campo">
+        <br />
+        <label><strong>Qualificação acadêmica?</strong></label>
+        <label>
+          <input
+            type="radio"
+            name="profweb"
+            value="bacharelado"
+            checked
+          />Bacharelado
+        </label>
+        <label>
+          <input type="radio" name="profweb" value="mestrado" />Mestrado
+        </label>
+        <label>
+          <input type="radio" name="profweb" value="doutorado" />Doutorado
+        </label>
+      </div>
+      <!-- Áreas de especialização -->
+      <fieldset class="grupo">
+        <div id="check">
+          <label><strong>Áreas de especialização:</strong></label
+          ><br /><br />
+          <input
+            type="checkbox"
+            id="disciplina1"
+            name="disciplina[]"
+            value="Matemática"
+          />
+          <label for="disciplina1"> Matemática</label>
+          <input
+            type="checkbox"
+            id="disciplina2"
+            name="disciplina[]"
+            value="Ciências"
+          />
+          <label for="disciplina2"> Ciências</label>
+          <input
+            type="checkbox"
+            id="disciplina3"
+            name="disciplina[]"
+            value="Literatura"
+          />
+          <label for="disciplina3"> Literatura</label>
+          <input
+            type="checkbox"
+            id="disciplina4"
+            name="disciplina[]"
+            value="História"
+          />
+          <label for="disciplina4"> História</label>
+          <input
+            type="checkbox"
+            id="disciplina5"
+            name="disciplina[]"
+            value="Geografia"
+          />
+          <label for="disciplina5"> Geografia</label>
+          <input
+            type="checkbox"
+            id="disciplina6"
+            name="disciplina[]"
+            value="Língua Portuguesa"
+          />
+          <label for="disciplina6"> Língua Portuguesa</label>
+          <input
+            type="checkbox"
+            id="disciplina7"
+            name="disciplina[]"
+            value="Outras"
+          />
+          <label for="disciplina7"> Outras</label>
+          <!-- Adicione mais campos de disciplinas conforme necessário -->
+        </div>
+      </fieldset>
+      <!-- Experiência profissional -->
+      <div class="campo">
+        <br />
+        <label for="experiencia"
+          ><strong>Experiência profissional:</strong></label
+        >
+        <textarea
+          rows="6"
+          style="width: 26em"
+          id="experiencia"
+          name="experiencia"
+        ></textarea>
+      </div>
+      <!-- Botão para inserir -->
+      <button class="botao" type="submit">Inserir</button>
+    </form>
+  </body>
+</html>

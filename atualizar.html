@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atualizar Banco de Dados</title>
+</head>
+<body>
+    <form action="atualizar.php" method="post">
+        <?php
+        // Connect to the database
+        $conn = mysqli_connect("localhost", "root", "", "trabalho5");
+
+        // Check connection
+        if (!$conn) {
+            die("Conexão falhou: " . mysqli_connect_error());
+        }
+
+        // Get the data from the database
+        $sql = "SELECT nid, sid, data, approval_status FROM nome_da_tabela";
+        $result = mysqli_query($conn, $sql);
+
+        // Display the data in a table
+        if (mysqli_num_rows($result) > 0) {
+            echo "<table border='1'>";
+            echo "<tr><th>NID</th><th>SID</th><th>Data</th><th>Status</th></tr>";
+
+            // Output data of each row
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row["nid"] . "</td>";
+                echo "<td>" . $row["sid"] . "</td>";
+                echo "<td>" . $row["data"] . "</td>";
+                echo "<td><select name='approval_status_" . $row["nid"] . "_" . $row["sid"] . "'>";
+                echo "<option value='' selected disabled>Selecione...</option>";
+                echo "<option value='Approved' " . ($row["approval_status"] == "Approved" ? "selected" : "") . ">Aprovado</option>";
+                echo "<option value='Declined' " . ($row["approval_status"] == "Declined" ? "selected" : "") . ">Recusado</option>";
+                echo "<option value='Pending' " . ($row["approval_status"] == "Pending" ? "selected" : "") . ">Pendente</option>";
+                echo "</select></td>";
+                echo "</tr>";
+            }
+
+            echo "</table>";
+        } else {
+            echo "Nenhum registro encontrado.";
+        }
+
+        // Close the database connection
+        mysqli_close($conn);
+        ?>
+        <input type="submit" value="Atualizar">
+    </form>
+</body>
+</html>
